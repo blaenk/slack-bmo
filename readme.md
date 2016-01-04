@@ -2,6 +2,8 @@ BMO facilitates the creation of [slack bots](https://api.slack.com/bot-users).
 
 ### Install
 
+The npm package is called [beemo](https://www.npmjs.com/package/beemo).
+
 ``` bash
 $ npm install beemo
 ```
