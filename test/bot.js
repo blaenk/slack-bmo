@@ -1,11 +1,14 @@
-import 'babel-polyfill';
-
 import Bot from '../lib/bot.js';
-import chai from 'chai';
+
+import Bluebird from 'bluebird';
 
 describe('Bot', () => {
   it('should have a name', () => {
     const bot = new Bot('bob');
-    chai.assert.equal('bob', bot.name);
+    assert.equal('bob', bot.name);
+  });
+
+  it('should test promises', () => {
+    return Bluebird.resolve(1).should.eventually.equal(1);
   });
 });
