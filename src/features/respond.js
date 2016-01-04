@@ -28,7 +28,7 @@ const respond = ctx => {
         }
       }
 
-      ctx.send(assignment);
+      ctx.postMessage(assignment);
     }
   }
 };
