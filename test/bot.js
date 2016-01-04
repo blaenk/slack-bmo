@@ -1,11 +1,11 @@
 import 'babel-polyfill';
 
 import Bot from '../lib/bot.js';
-import assert from 'assert';
+import chai from 'chai';
 
 describe('Bot', () => {
   it('should have a name', () => {
     const bot = new Bot('bob');
-    assert.equal('bob', bot.name);
+    chai.assert.equal('bob', bot.name);
   });
 });
