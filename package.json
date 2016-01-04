@@ -1,0 +1,54 @@
+{
+  "name": "beemo",
+  "version": "0.0.1",
+  "description": "friendly slack bot",
+  "scripts": {
+    "clean": "rm -rfv ./lib/",
+    "build": "npm run clean && babel src --out-dir lib --source-maps",
+    "watch": "npm run clean && babel src --out-dir lib --source-maps --watch",
+    "start": "npm run build && node ./lib/app.js",
+
+    "compile": "npm run clean && babel src --out-dir lib --ignore src/app.js",
+    "prepublish": "npm run compile"
+  },
+  "main": "./lib/index",
+  "files": ["lib/"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blaenk/bmo.git"
+  },
+  "keywords": [
+    "slack",
+    "mumble"
+  ],
+  "author": "Jorge Israel Peña",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/blaenk/bmo/issues"
+  },
+  "homepage": "https://github.com/blaenk/bmo#readme",
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13",
+    "source-map-support": "^0.4.0"
+  },
+  "peerDependencies": {
+    "babel-polyfill": "^6.3.14"
+  },
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "body-parser": "^1.14.2",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "google": "^1.3.0",
+    "htmlparser2": "^3.9.0",
+    "lame": "^1.2.3",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "mumble": "^0.3.7",
+    "request": "^2.67.0",
+    "request-promise": "^1.0.2",
+    "slack-client": "l12s/node-slack-client"
+  }
+}
