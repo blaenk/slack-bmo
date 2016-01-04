@@ -1,5 +1,6 @@
 src/
 keys/
+sounds/
 .babelrc
 .env
 .eslintrc

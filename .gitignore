@@ -1,5 +1,6 @@
 node_modules/
 lib/
 keys/
+sounds/
 .env
 .tern-port
