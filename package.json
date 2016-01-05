@@ -39,6 +39,8 @@
     "chai": "^3.4.1",
     "chai-as-promised": "^5.2.0",
     "mocha": "^2.3.4",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0",
     "source-map-support": "^0.4.0"
   },
   "dependencies": {
