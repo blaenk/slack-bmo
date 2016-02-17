@@ -1,11 +1,16 @@
 import querystring from 'querystring';
 
-import Bluebird from 'bluebird';
+import request from 'request-promise';
 import _ from 'lodash';
 
-import google from 'google';
-
-const googleAsync = Bluebird.promisify(google, {multiArgs: true});
+const searchRequest = query => {
+  return request({
+    url: 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0',
+    json: true,
+    format: 'json',
+    qs: {q: query},
+  });
+};
 
 const search = (ctx, query) => {
   if (!query) {
@@ -18,29 +23,29 @@ const search = (ctx, query) => {
   const escaped = querystring.escape(query).replace(/%20/g, '+');
   const url = `https://www.google.com/search?q=${escaped}`;
 
-  googleAsync(query)
-    .spread((next, links) => {
-      const results =
-        _.chain(links)
-        .filter(l => l.link && l.title)
-        .uniq(false, link => link.link)
+  searchRequest(query)
+    .then((response) => {
+      const results = response.responseData.results;
+
+      const filtered =
+        _.chain(results)
+        .filter(r => r.GsearchResultClass == 'GwebSearch')
         .map((result, index) =>
-              `${index + 1}. <${result.link}|${result.title}>`)
-        .take(3)
+              `${index + 1}. <${result.unescapedUrl}|${result.titleNoFormatting}>`)
         .value();
 
-      let response;
+      let message;
 
-      if (results.length < 1) {
-        response = "No results";
+      if (filtered.length < 1) {
+        message = "No results";
       } else {
-        response = results.join("\n");
+        message = filtered.join("\n");
       }
 
       const body =
 `Google results for *${query}*
 
-${response}
+${message}
 
 source: ${url}`;
 
