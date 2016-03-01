@@ -44,6 +44,7 @@
     "source-map-support": "^0.4.0"
   },
   "dependencies": {
+    "@slack/client": "^2.0.4",
     "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
     "dotenv": "^1.2.0",
@@ -54,7 +55,6 @@
     "moment": "^2.10.6",
     "mumble": "^0.3.7",
     "request": "^2.67.0",
-    "request-promise": "^1.0.2",
-    "slack-client": "l12s/node-slack-client"
+    "request-promise": "^1.0.2"
   }
 }

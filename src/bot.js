@@ -6,7 +6,7 @@ const mumble = Bluebird.promisifyAll(require('mumble'));
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import slack from 'slack-client';
+import slack from '@slack/client';
 
 import MessageContext from './slack/message_context';
 
@@ -24,7 +24,7 @@ export default class Bot extends events.EventEmitter {
 
   connectToSlack(opts) {
       this.webClient = new slack.WebClient(opts.token);
-      this.rtm = new slack.RtmClient(this.webClient, {logLevel: 'debug'});
+      this.rtm = new slack.RtmClient(opts.token, {logLevel: 'debug'});
       this.rtm.start();
       return Bluebird.resolve(this.rtm);
   }
