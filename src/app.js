@@ -34,10 +34,6 @@ bmo.connectToSlack({token: process.env.SLACK_TOKEN})
     ctx.handle(alias.rewrite);
     ctx.handle(respond.respond);
 
-    ctx.patterns(
-      {pattern: /([\S]+)\.gif/, handler: gif}
-    );
-
     ctx.urls(
       {host: 'en.wikipedia.org',     handler: wikipedia.unfurl},
       {host: 'news.ycombinator.com', handler: hn.unfurl}
@@ -51,8 +47,6 @@ bmo.connectToSlack({token: process.env.SLACK_TOKEN})
       {triggers: ['w', 'wiki'],   handler: wikipedia.search},
       {triggers: 'play',          handler: soundboard.play}
     );
-
-    ctx.handle(mumble.echo);
   }));
 });
 
