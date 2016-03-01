@@ -24,7 +24,7 @@ export default class Bot extends events.EventEmitter {
 
   connectToSlack(opts) {
       this.webClient = new slack.WebClient(opts.token);
-      this.rtm = new slack.RtmClient(opts.token, {logLevel: 'debug'});
+      this.rtm = new slack.RtmClient(opts.token);
       this.rtm.start();
       return Bluebird.resolve(this.rtm);
   }
